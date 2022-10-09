@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{%  block 'titulo' %} Login {% endblock %} <!--Titulo da pagina-->
+
+{% block 'conteudo' %} <!--Onde ficara todo conteudo do body-->
+
+<div style="margin-left: 90% ;">
+  <a href="{% url 'cadastro' %}" class="btn btn-warning">Cadastre-se</a>
+</div><br>
+
+<nav class="navbar navbar-white bg-dark">
+    <h3 style="color:white ;">Suporte GSM!</h3>
+</nav>
+
+<div class="container" style="width: 500px;"><br>
+
+  {% if status == '1'  %}
+   <div class="alert alert-danger" role="alert">
+    Preencha os campos corretamente!
+  </div>
+  {% endif %}
+
+  {% if status == '2'  %}
+  <div class="alert alert-danger" role="alert">
+   Faça login antes de tentar acessar o Sistema
+ </div>
+  {% endif %}
+
+
+<center><h1>Faça login na sua conta</h1></center>
+
+<form class="form-control" method="POST" action="{% url 'valida_login' %}">{% csrf_token %}
+    <div class="form-group">
+      <input type="email" class="form-control"placeholder="Digite seu Email" name="email">
+    </div>
+
+      <div class="form-group">
+        <input type="password" class="form-control"placeholder="Senha" name="senha">
+      </div>
+    
+    <center><button type="submit" class="btn btn-primary">Entrar</button></center>
+  </form>
+
+
+
+
+
+
+
+</div>
+
+{% endblock %}
